@@ -1,86 +1,133 @@
 import React, { useEffect, useRef } from 'react';
 
-const BlackPulseLines: React.FC = () => {
+const ElasticGrid: React.FC = () => {
   const canvasRef = useRef<HTMLCanvasElement>(null);
 
   useEffect(() => {
     const canvas = canvasRef.current;
     if (!canvas) return;
-
     const ctx = canvas.getContext('2d');
     if (!ctx) return;
 
-    const resizeCanvas = () => {
-      canvas.width = window.innerWidth;
-      canvas.height = window.innerHeight;
+    let width = window.innerWidth;
+    let height = window.innerHeight;
+    
+    // Grid settings
+    const spacing = 40; 
+    let points: Point[] = [];
+    const mouse = { x: -1000, y: -1000 };
+
+    const resize = () => {
+      width = window.innerWidth;
+      height = window.innerHeight;
+      canvas.width = width;
+      canvas.height = height;
+      initGrid();
     };
 
-    resizeCanvas();
-    window.addEventListener('resize', resizeCanvas);
+    class Point {
+      x: number;
+      y: number;
+      originX: number;
+      originY: number;
+      vx: number;
+      vy: number;
+      friction: number;
+      ease: number;
 
-    let time = 0;
-    const lines: { x: number; vx: number; speed: number; phase: number }[] = [];
+      constructor(x: number, y: number) {
+        this.x = x;
+        this.y = y;
+        this.originX = x;
+        this.originY = y;
+        this.vx = 0;
+        this.vy = 0;
+        this.friction = 0.9; // How fast it slows down
+        this.ease = 0.1; // How fast it returns to home
+      }
 
-    // Vertical pulsing lines with horizontal movement
-    for (let i = 0; i < 35; i++) {
-      lines.push({
-        x: (i / 35) * canvas.width,
-        vx: (Math.random() - 0.5) * 0.3, // Gentle horizontal drift
-        speed: 0.4 + Math.random() * 0.4,
-        phase: Math.random() * Math.PI * 2
-      });
+      update() {
+        // Distance to mouse
+        const dx = mouse.x - this.x;
+        const dy = mouse.y - this.y;
+        const distance = Math.sqrt(dx * dx + dy * dy);
+        
+        // Repel force
+        const forceDistance = 150;
+        let force = 0;
+        let angle = 0;
+
+        if (distance < forceDistance) {
+            force = (forceDistance - distance) / forceDistance;
+            angle = Math.atan2(dy, dx);
+            const moveX = Math.cos(angle) * force * 15;
+            const moveY = Math.sin(angle) * force * 15;
+            this.vx -= moveX;
+            this.vy -= moveY;
+        }
+
+        // Spring back to origin
+        this.vx += (this.originX - this.x) * this.ease;
+        this.vy += (this.originY - this.y) * this.ease;
+
+        // Apply friction
+        this.vx *= this.friction;
+        this.vy *= this.friction;
+
+        // Move
+        this.x += this.vx;
+        this.y += this.vy;
+      }
+
+      draw() {
+        if (!ctx) return;
+        ctx.fillStyle = 'rgba(150, 150, 200, 0.4)'; // Subtle bluish-grey
+        ctx.beginPath();
+        ctx.arc(this.x, this.y, 1.5, 0, Math.PI * 2);
+        ctx.fill();
+      }
     }
 
-    const animate = () => {
-      // Fast fade
-      ctx.fillStyle = 'rgba(0, 0, 0, 0.12)';
-      ctx.fillRect(0, 0, canvas.width, canvas.height);
-
-      lines.forEach(line => {
-        // Horizontal movement
-        line.x += line.vx;
-        if (line.x < 0 || line.x > canvas.width) line.vx *= -1;
-
-        // Pulsing wave height
-        const wave = Math.sin(time * 0.03 + line.phase) * 25 + 25;
-        
-        // Base line - much dimmer
-        ctx.strokeStyle = 'rgba(255, 255, 255, 0.08)';
-        ctx.lineWidth = 1;
-        ctx.beginPath();
-        ctx.moveTo(line.x, 0);
-        ctx.lineTo(line.x, canvas.height);
-        ctx.stroke();
-
-        // Pulsing segments - reduced opacity
-        for (let y = 0; y < canvas.height; y += 45) {
-          const pulse = Math.sin((y / canvas.height) * Math.PI * 2 + time * 0.05 + line.phase) * 0.4 + 0.4;
-          ctx.strokeStyle = `rgba(255, 255, 255, ${pulse * 0.15})`; // Reduced from 0.6 to 0.15
-          ctx.lineWidth = 1.5;
-          ctx.beginPath();
-          ctx.moveTo(line.x - 1.5, y);
-          ctx.lineTo(line.x + 1.5, y);
-          ctx.stroke();
+    const initGrid = () => {
+      points = [];
+      for (let x = 0; x < width; x += spacing) {
+        for (let y = 0; y < height; y += spacing) {
+          points.push(new Point(x, y));
         }
+      }
+    };
+
+    const animate = () => {
+      ctx.clearRect(0, 0, width, height);
+
+      // Draw connections
+      ctx.strokeStyle = 'rgba(150, 150, 200, 0.15)';
+      ctx.beginPath();
+      
+      // Note: Drawing full grid lines is heavy, so we just draw points 
+      // or short interactions. Let's stick to points + slight lines for speed.
+      
+      points.forEach(point => {
+        point.update();
+        point.draw();
       });
 
-      time += 1;
       requestAnimationFrame(animate);
     };
 
+    window.addEventListener('resize', resize);
+    window.addEventListener('mousemove', (e) => {
+        mouse.x = e.clientX;
+        mouse.y = e.clientY;
+    });
+
+    resize();
     animate();
 
-    return () => {
-      window.removeEventListener('resize', resizeCanvas);
-    };
+    return () => window.removeEventListener('resize', resize);
   }, []);
 
-  return (
-    <canvas
-      ref={canvasRef}
-      className="fixed top-0 left-0 w-full h-full z-0 pointer-events-none"
-    />
-  );
+  return <canvas ref={canvasRef} className="fixed top-0 left-0 w-full h-full z-0 pointer-events-none" />;
 };
 
-export default BlackPulseLines;
+export default ElasticGrid;
