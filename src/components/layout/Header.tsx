@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { X, Menu } from "lucide-react";
+import { X, Menu, Download } from "lucide-react";
 
 const navItems = [
   { name: "Home", href: "#home" },
@@ -49,9 +49,8 @@ const Header: React.FC = () => {
           <span className="text-purple-500"></span>Portfolio
         </motion.a>
 
-        {/* Desktop Navigation */}
         <nav className="hidden md:block">
-          <ul className="flex space-x-8">
+          <ul className="flex items-center space-x-8">
             {navItems.map((item, i) => (
               <motion.li
                 key={item.name}
@@ -69,6 +68,20 @@ const Header: React.FC = () => {
                 </a>
               </motion.li>
             ))}
+            <motion.li
+              initial={{ opacity: 0, scale: 0.8 }}
+              animate={{ opacity: 1, scale: 1 }}
+              transition={{ duration: 0.5, delay: 0.5 }}
+            >
+              <a
+                href="public/SaiSurajResume.pdf"
+                download="Sai_Suraj_Resume.pdf"
+                className="flex items-center gap-2 px-5 py-2 rounded-full border border-purple-500 text-purple-500 hover:bg-purple-500 hover:text-white transition-all duration-300 font-medium"
+              >
+                <span>Resume</span>
+                <Download size={18} />
+              </a>
+            </motion.li>
           </ul>
         </nav>
 
@@ -111,6 +124,21 @@ const Header: React.FC = () => {
                     </a>
                   </motion.li>
                 ))}
+                <motion.li
+                  initial={{ opacity: 0, x: -50 }}
+                  animate={{ opacity: 1, x: 0 }}
+                  transition={{ duration: 0.3, delay: navItems.length * 0.1 }}
+                >
+                  <a
+                    href="/Resume.pdf"
+                    download="Sai_Suraj_Resume.pdf"
+                    className="flex items-center gap-2 text-purple-400 hover:text-purple-300 text-lg py-2 font-medium"
+                    onClick={() => setIsOpen(false)}
+                  >
+                    <span>Download Resume</span>
+                    <Download size={20} />
+                  </a>
+                </motion.li>
               </ul>
             </nav>
           </motion.div>

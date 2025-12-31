@@ -1,7 +1,6 @@
 import { Project } from "../types";
 import Agora from "/Agora.png";
 import intelli from "/Intelli-prep.png"
-import fintech from "/fintech.png";
 import codelogic from "/Code-Logic.png"
 import cad from "/Cadberry-gifts.png"
 import todo from "/to-do.png"
@@ -50,7 +49,8 @@ export const projects: Project[] = [
     description:
       "A comprehensive vulnerability scanner that identifies security flaws and performance bottlenecks in web applications.",
     category: ["Web App", "AI"],
-    image: fintech,
+    image:
+      Agora,
     tags: [
       "Flask",
       "Python",
