@@ -2,7 +2,7 @@ import { Project } from "../types";
 import Agora from "/Agora.png";
 import intelli from "/Intelli-prep.png"
 import codelogic from "/Code-Logic.png"
-import cad from "/Cadberry-gifts.png"
+import resume from "/ResumeSync.png"
 import todo from "/to-do.png"
 
 export const projects: Project[] = [
@@ -27,6 +27,24 @@ export const projects: Project[] = [
   },
   {
     id: 2,
+    title: "Resume-Sync",
+    description:
+    "A creative e-commerce platform specializing in personalized gift recommendations and seamless digital gifting experiences.",
+    category: ["AI"],
+    image: resume,
+    tags: [
+      "Html",
+      "Css",
+      "Js",
+      "Web Development",
+      "AI",
+      "Extension",
+    ],
+    link: "https://github.com/sai-suraj143/Resume_Sync.git",
+    github: "https://github.com/sai-suraj143/Resume_Sync.git",
+  },
+  {
+    id: 3,
     title: "Intelli-Prep",
     description:
       "An AI-powered interview preparation tool designed to provide personalized mock interviews and real-time feedback for job seekers.",
@@ -44,7 +62,7 @@ export const projects: Project[] = [
     github: "https://github.com/sai-suraj143/Intelli-Prep.git",
   },
   {
-    id: 3,
+    id: 4,
     title: "Web-Scan-Pro",
     description:
       "A comprehensive vulnerability scanner that identifies security flaws and performance bottlenecks in web applications.",
@@ -60,7 +78,7 @@ export const projects: Project[] = [
     github: "https://github.com/sai-suraj143/web-scan-pro.git",
   },
   {
-    id: 4,
+    id: 5,
     title: "CodeLogic-Tutor",
     description:
       "An interactive learning assistant that helps students master programming logic and data structures through guided coding challenges.",
@@ -69,22 +87,6 @@ export const projects: Project[] = [
     tags: ["React", "Tailwind CSS", "Framer Motion", "EmailJS", "WhatsApp API"],
     link: "https://codelogic-tutor.onrender.com/",
     github: "https://github.com/sai-suraj143/CodeLogic_Tutor.git",
-  },
-  {
-    id: 5,
-    title: "Cadberry-Gifts",
-    description:
-      "A creative e-commerce platform specializing in personalized gift recommendations and seamless digital gifting experiences.",
-    category: ["Web App", "AI"],
-    image: cad,
-    tags: [
-      "Html",
-      "Css",
-      "Js",
-      "Web Development",
-    ],
-    link: "https://sai-suraj143.github.io/cadberry.gifts/",
-    github: "https://github.com/sai-suraj143/cadberry.gifts.git",
   },
   {
     id: 6,
