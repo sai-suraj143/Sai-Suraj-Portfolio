@@ -73,14 +73,14 @@ const Header: React.FC = () => {
               animate={{ opacity: 1, scale: 1 }}
               transition={{ duration: 0.5, delay: 0.5 }}
             >
-              <a
+              {/* <a
                 href="public/SaiSurajResume.pdf"
                 download="Sai_Suraj_Resume.pdf"
                 className="flex items-center gap-2 px-5 py-2 rounded-full border border-purple-500 text-purple-500 hover:bg-purple-500 hover:text-white transition-all duration-300 font-medium"
               >
                 <span>Resume</span>
                 <Download size={18} />
-              </a>
+              </a> */}
             </motion.li>
           </ul>
         </nav>
