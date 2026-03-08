@@ -3,33 +3,33 @@ import Agora from "/Agora.png";
 import intelli from "/Intelli-prep.png"
 import codelogic from "/Code-Logic.png"
 import resume from "/ResumeSync.png"
-import todo from "/to-do.png"
+import blank from "/blankscreen.jpeg"
+
 
 export const projects: Project[] = [
+  // {
+  //   id: 1,
+  //   title: "Agora-Blockchain",
+  //   description:
+  //     "A decentralized voting platform leveraging blockchain technology to ensure immutable, transparent, and secure election results.",
+  //   category: ["Web App", "AI"],
+  //   image:
+  //     Agora,
+  //   tags: [
+  //     "AI",
+  //     "Machine Learning",
+  //     "Prediction",
+  //     "Classification",
+  //     "Blockchain",
+      
+  //   ],
+  //   // link: "https://sai-suraj143.github.io/to-do-App/",
+  //   github: "https://github.com/sai-suraj143/Agora-Blockchain.git",
+  // },
   {
     id: 1,
-    title: "Agora-Blockchain",
-    description:
-      "A decentralized voting platform leveraging blockchain technology to ensure immutable, transparent, and secure election results.",
-    category: ["Web App", "AI"],
-    image:
-      Agora,
-    tags: [
-      "AI",
-      "Machine Learning",
-      "Prediction",
-      "Classification",
-      "Blockchain",
-      
-    ],
-    // link: "https://sai-suraj143.github.io/to-do-App/",
-    github: "https://github.com/sai-suraj143/Agora-Blockchain.git",
-  },
-  {
-    id: 2,
     title: "Resume-Sync",
-    description:
-    "A creative e-commerce platform specializing in personalized gift recommendations and seamless digital gifting experiences.",
+    description: "Pitched and developed a cross-platform sync engine to automate professional profile updates. Shortlisted for the Vadodara Startup Festival after identifying and solving user friction in manual data entry.",
     category: ["AI"],
     image: resume,
     tags: [
@@ -43,8 +43,41 @@ export const projects: Project[] = [
     link: "https://github.com/sai-suraj143/Resume_Sync.git",
     github: "https://github.com/sai-suraj143/Resume_Sync.git",
   },
+
+  {
+  id: 2, // or your next available ID
+  title: "Copilot-X: RAG Engine",
+  description: "Built a Retrieval-Augmented Generation engine to perform semantic search over unstructured enterprise data. Optimized for context-aware retrieval using LangChain and vector embeddings to reduce LLM hallucinations.",
+  category: ["AI"],
+  image: blank, // make sure to import an image or use a placeholder
+  tags: [
+    "Python",
+    "LangChain",
+    "Vector Databases",
+    "LLM",
+    "Semantic Search",
+    "NLP"
+  ],
+  link: "https://github.com/sai-suraj143/copilot-x-rag-engine",
+  github: "https://github.com/sai-suraj143/copilot-x-rag-engine",
+},
+
   {
     id: 3,
+    title: "SentinelGuard",
+    description: "Designed a real-time security automation tool using python. Optimized for low-latency performance and high scalability to handle concurrent security data streams.",
+    category: ["Web App", "AI"],
+    image:blank,
+    tags: [
+      "Flask",
+      "Python",
+      "Data Visualization",
+    ],
+    // link: "",
+    github: "https://github.com/sai-suraj143/web-scan-pro.git",
+  },
+    {
+    id: 4,
     title: "Intelli-Prep",
     description:
       "An AI-powered interview preparation tool designed to provide personalized mock interviews and real-time feedback for job seekers.",
@@ -61,25 +94,10 @@ export const projects: Project[] = [
     link: "https://intelli-prep-iota.vercel.app/",
     github: "https://github.com/sai-suraj143/Intelli-Prep.git",
   },
-  {
-    id: 4,
-    title: "Web-Scan-Pro",
-    description:
-      "A comprehensive vulnerability scanner that identifies security flaws and performance bottlenecks in web applications.",
-    category: ["Web App", "AI"],
-    image:
-      Agora,
-    tags: [
-      "Flask",
-      "Python",
-      "Data Visualization",
-    ],
-    // link: "",
-    github: "https://github.com/sai-suraj143/web-scan-pro.git",
-  },
+  
   {
     id: 5,
-    title: "CodeLogic-Tutor",
+    title: "code Logic tutor",
     description:
       "An interactive learning assistant that helps students master programming logic and data structures through guided coding challenges.",
     category: ["Web App", "UI/UX"],
@@ -88,17 +106,17 @@ export const projects: Project[] = [
     link: "https://codelogic-tutor.onrender.com/",
     github: "https://github.com/sai-suraj143/CodeLogic_Tutor.git",
   },
-  {
-    id: 6,
-    title: "To-Do-App",
-    description:
-      "A streamlined task management application focused on productivity, featuring intuitive UI for organizing daily workflows and goals.",
-    category: ["Web App", "UI/UX"],
-    image: todo,
-    tags: ["React", "Node.js", "Tailwind CSS", "Spotify API", "Firebase"],
-    link: "https://sai-suraj143.github.io/to-do-App/",
-    github: "https://github.com/sai-suraj143/to-do-App.git",
-  },
+  // {
+  //   id: 6,
+  //   title: "To-Do-App",
+  //   description:
+  //     "A streamlined task management application focused on productivity, featuring intuitive UI for organizing daily workflows and goals.",
+  //   category: ["Web App", "UI/UX"],
+  //   image: todo,
+  //   tags: ["React", "Node.js", "Tailwind CSS", "Spotify API", "Firebase"],
+  //   link: "https://sai-suraj143.github.io/to-do-App/",
+  //   github: "https://github.com/sai-suraj143/to-do-App.git",
+  // },
   // {
   //   id: 7,
   //   title: "Financial Agent - Personal Finance Assistant",

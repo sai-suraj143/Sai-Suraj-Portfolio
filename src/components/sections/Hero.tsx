@@ -3,7 +3,7 @@ import { motion } from "framer-motion";
 import { ArrowDownCircle } from "lucide-react";
 import SocialIcon from "../ui/SocialIcon";
 import { socialLinks } from "../../data/social";
-import suraj from "../../assets/suraj.png";
+import suraj from "../../assets/saisuraj.jpeg";
 
 
 const Hero: React.FC = () => {
@@ -34,8 +34,8 @@ const Hero: React.FC = () => {
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.7, delay: 0.4 }}
             >
-              <span className="text-purple-500">AI Developer</span> | Creative
-              Technologist
+              <span className="text-purple-500">AI Developer</span> |
+              Product Strategist
             </motion.h2>
             <motion.p
               className="text-gray-400 max-w-xl mb-8"
@@ -46,7 +46,7 @@ const Hero: React.FC = () => {
               I craft smart, impactful digital solutions by blending creativity
               with code — backed by strong problem-solving skills and hands-on
               experience in Machine Learning, Deep Learning, Generative AI (RAG
-              & Agentic AI), and full-stack web development.
+              & Agentic AI), and full-stack web development, also building scalable technical solutions with a focus on product-market fit and user-centric design.
             </motion.p>
 
             <motion.div

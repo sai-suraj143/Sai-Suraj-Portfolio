@@ -25,11 +25,11 @@ export const services: Service[] = [
     description: "Creating visually rich and interactive 3D experiences using Blender, Three.js, and Framer Motion.",
     icon: "Camera"
   },
-  // {
-  //   id: 5,
-  //   title: "IoT & Embedded Systems",
-  //   description: "Building smart connected devices using ESP32, sensors, actuators, and cloud-based integrations for real-time interaction.",
-  //   icon: "Cpu"
-  // }
+  {
+    id: 5,
+    title: "IoT & Embedded Systems",
+    description: "Building smart connected devices using ESP32, sensors, actuators, and cloud-based integrations for real-time interaction.",
+    icon: "Cpu"
+  }
 ];
 
