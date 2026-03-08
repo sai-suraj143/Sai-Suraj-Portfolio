@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { X, Menu, Download } from "lucide-react";
+import { X, Menu } from "lucide-react";
 
 const navItems = [
   { name: "Home", href: "#home" },
@@ -129,7 +129,7 @@ const Header: React.FC = () => {
                   animate={{ opacity: 1, x: 0 }}
                   transition={{ duration: 0.3, delay: navItems.length * 0.1 }}
                 >
-                  <a
+                  {/* <a
                     href="/Resume.pdf"
                     download="Sai_Suraj_Resume.pdf"
                     className="flex items-center gap-2 text-purple-400 hover:text-purple-300 text-lg py-2 font-medium"
@@ -137,7 +137,7 @@ const Header: React.FC = () => {
                   >
                     <span>Download Resume</span>
                     <Download size={20} />
-                  </a>
+                  </a> */}
                 </motion.li>
               </ul>
             </nav>
